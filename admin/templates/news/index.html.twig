@@ -1,0 +1,227 @@
+
+
+{% extends 'base.html.twig'%}
+{% block title %} Мэдээ {% endblock %}
+
+{% block body %}
+{{ render(controller(
+    'App\\Controller\\HomeController::index'
+)) }}
+</div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="ik ik-menu theme-color"></i>
+                        <div class="d-inline">
+                            <h5> Мэдээ </h5>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" id="card1">
+                    <div class="card-header" style="flex-flow: row-reverse;">
+                        <a href="{{ path('news_new') }}">
+                            <button type="button" class="btn btn-theme"> <i class="ik ik-plus-circle"></i> Мэдээ шинээр нэмэх </button>
+                        </a>
+                    </div>
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                        <br>
+                    {% endfor %}
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                        <br>
+                    {% endfor %}
+                    <div class="card-body">
+						<div class="dt-responsive">
+							<table id="alt-pg-dt" class="user-table table table-striped table-bordered nowrap">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Зураг</th>
+                                    <th>Гарчиг</th>
+                                    <th>Төрөл</th>
+                                    <th>Огноо</th>
+                                    <th>Дараалал</th>
+                                    <th>Төлөв</th>
+                                    <th><i class="ik ik-settings"></i></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%  set i=0 %}
+                                {% for new in news %}
+                                    <tr class="list-item">
+                                        <td>{% set i=i+1 %}{{ i }}</td>
+                                        <td><a href="{{ path('news_show', {'id': new.id}) }}"><img src="/upload/{{ new.picture }}" alt="User" class="img-half-10" style="height: 180px"></a></td>
+                                        <td><a href="{{ path('news_show', {'id': new.id}) }}">{{ new.title }}</a></td>
+                                        <td>
+											{% if new.types==1 %}
+												<span class="badge badge-secondary badge-danger mb-1">Онцгой</span>
+											{% else %}
+												<span class="badge badge-secondary badge-light mb-1">Энгийн</span>
+											{% endif %}</td>
+                                        <td>{{ new.date ? new.date|date('Y-m-d') : '' }}</td>
+                                        {#                                        <td>{{ article.comments }}</td>#}
+                                        <td>{{ new.sort }}</td>
+                                        <td>
+                                            {% if new.status==1 %}
+                                                <span class="badge badge-pill badge-success mb-1">Идэвхтэй</span>
+                                            {% else %}
+                                                <span class="badge badge-pill badge-secondary mb-1">Идэвхгүй</span>
+                                            {% endif %}
+                                        </td>
+                                        {#                                        <td>{{ article.who }}</td>#}
+                                        {#                                        <td>{{ article.createdDate ? article.createdDate|date('Y-m-d H:i:s') : '' }}</td>#}
+                                        <td>
+                                            <div class="list-actions">
+                                                {#                                                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}#}
+                                                <a href="{{ path('news_edit', {'id': new.id}) }}" data-toggle="tooltip" data-placement="top" title="Засварлах"><i class="ik ik-edit-2"></i></a>
+                                                {#                                                {% endif %}#}
+                                                {#                                                {% if is_granted('ROLE_SUPER_ADMIN') %}#}
+                                                {#                                                    <a type="button" data-toggle="modal" data-target="#delete{{ id }}" data-toggle="tooltip" data-placement="top" title="Контентийг устгах"><i class="ik ik-trash-2"></i></a>#}
+                                                {#                                                {% endif %}#}
+                                            </div>
+                                            {#                                            <a href="{{ path('article_show', {'id': article.id}) }}">show</a>#}
+                                            {#                                            <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8">Мэдээлэл байхгүй байна</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Зураг</th>
+                                    <th>Гарчиг</th>
+                                    <th>Төрөл</th>
+                                    <th>Огноо</th>
+                                    <th>Дараалал</th>
+                                    <th>Төлөв</th>
+                                    <th><i class="ik ik-settings"></i></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#        {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}#}
+        {#            {% for c in content %}#}
+        {#                <div class="modal fade" id="edit{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">#}
+        {#                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px !important;">#}
+        {#                        <div class="modal-content">#}
+        {#                            <form class="forms-sample" name="myForm" method="post" action="{{ path('update_z')}}" onsubmit="return validate_form(this)">#}
+
+        {#                                <div class="modal-header">#}
+        {#                                    <input name="id" type="hidden" value="{{ c.id }}">#}
+
+        {#                                    <h5 class="modal-title" id="exampleModalCenterLabel">{{ c.name }}-н {{ c.date|date("Y-m-d")}}-ний өдрийн мэдээллийг засварлах</h5>#}
+        {#                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+        {#                                </div>#}
+        {#                                <div class="modal-body">#}
+        {#                                    <div class="row">#}
+        {#                                        #}{#                                <div class="col-sm-12">#}
+        {#                                        #}{#                                    <div class="form-group">#}
+        {#                                        #}{#                                        <label>Текст</label>#}
+        {#                                        #}{#                                        <input type="text" name="text" class="form-control" value="{{ c.content }}">#}
+        {#                                        #}{#                                    </div>#}
+        {#                                        #}{#                                </div>#}
+        {#                                        <div class="col-sm-12">#}
+        {#                                        <textarea class="form-control" type="text" name="message1" rows="3"#}
+        {#                                                  onKeyDown="textCounter(document.myForm.message1,document.myForm.remLen1,320)"#}
+        {#                                                  onKeyUp="textCounter(document.myForm.message1,document.myForm.remLen1,320)">{{ c.content }}</textarea>#}
+        {#                                            <input readonly type="text" name="remLen1" size="3" maxlength="3" value="320" style="color:#F00">тэмдэгт үлдлээ.#}
+        {#                                        </div>#}
+
+
+        {#                                    </div>#}
+        {#                                </div>#}
+
+        {#                                <div class="modal-footer">#}
+        {#                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>#}
+        {#                                    <button type="submit" class="btn btn-success">Хадгалах</button>#}
+        {#                                </div>#}
+        {#                            </form>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            {% endfor %}#}
+        {#        {% endif %}#}
+
+
+        {% endblock %}
+
+
+        {#        {% extends 'base.html.twig' %}#}
+
+        {#{% block title %}Interview index{% endblock %}#}
+
+        {#{% block body %}#}
+        {#    <h1>Interview index</h1>#}
+
+        {#    <table class="table">#}
+        {#        <thead>#}
+        {#            <tr>#}
+        {#                <th>Id</th>#}
+        {#                <th>Title</th>#}
+        {#                <th>Bodys</th>#}
+        {#                <th>Picture</th>#}
+        {#                <th>Types</th>#}
+        {#                <th>Status</th>#}
+        {#                <th>Views</th>#}
+        {#                <th>Date</th>#}
+        {#                <th>Comments</th>#}
+        {#                <th>Sort</th>#}
+        {#                <th>Who</th>#}
+        {#                <th>CreatedDate</th>#}
+        {#                <th>actions</th>#}
+        {#            </tr>#}
+        {#        </thead>#}
+        {#        <tbody>#}
+        {#        {% for interview in interviews %}#}
+        {#            <tr>#}
+        {#                <td>{{ interview.id }}</td>#}
+        {#                <td>{{ interview.title }}</td>#}
+        {#                <td>{{ interview.bodys }}</td>#}
+        {#                <td>{{ interview.picture }}</td>#}
+        {#                <td>{{ interview.types }}</td>#}
+        {#                <td>{{ interview.status }}</td>#}
+        {#                <td>{{ interview.views }}</td>#}
+        {#                <td>{{ interview.date ? interview.date|date('Y-m-d') : '' }}</td>#}
+        {#                <td>{{ interview.comments }}</td>#}
+        {#                <td>{{ interview.sort }}</td>#}
+        {#                <td>{{ interview.who }}</td>#}
+        {#                <td>{{ interview.createdDate ? interview.createdDate|date('Y-m-d H:i:s') : '' }}</td>#}
+        {#                <td>#}
+        {#                    <a href="{{ path('interview_show', {'id': interview.id}) }}">show</a>#}
+        {#                    <a href="{{ path('interview_edit', {'id': interview.id}) }}">edit</a>#}
+        {#                </td>#}
+        {#            </tr>#}
+        {#        {% else %}#}
+        {#            <tr>#}
+        {#                <td colspan="13">no records found</td>#}
+        {#            </tr>#}
+        {#        {% endfor %}#}
+        {#        </tbody>#}
+        {#    </table>#}
+
+        {#    <a href="{{ path('interview_new') }}">Create new</a>#}
+        {#{% endblock %}#}

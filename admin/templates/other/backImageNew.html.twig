@@ -1,0 +1,82 @@
+{% extends 'base.html.twig'%}
+{% block title %} Шинэ зураг нэмэх {% endblock %}
+
+{% block body %}
+{{ render(controller(
+	'App\\Controller\\HomeController::index'
+)) }}
+</div>
+
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="page-header">
+			<div class="row align-items-end">
+				<div class="col-lg-8">
+					<div class="page-header-title">
+						<i class="ik ik-plus-square theme-color"></i>
+						<div class="d-inline">
+							<h5> Шинэ зураг нэмэх</h5>
+							<span></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row layout-wrap" id="layout-wrap">
+			<div class="col-md-12">
+				<div class="card" id="card1">
+					<div class="card-header" style="flex-flow: row-reverse;">
+					</div>
+					<div class="card-body">
+						<form class="forms-sample" name="myForm" method="post" action="{{ path('backImage_insert') }}" enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-md-9">
+									<div class="form-group">
+										<label>Зураг оруулах <span class="red">*</span></label>
+										<input type="file" id="image" name="image" class="form-control" required>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Төлөв<span class="red">*</span></label>
+										<select name="status" class="form-control" required >
+											<option selected disabled value=''>Төлөвөө сонгоно уу?</option>
+											<option value="1"> Идэвхтэй</option>
+											<option value="0"> Идэвхгүй</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<button name="save" type="submit" class="btn btn-primary mr-2">Хадгалах</button>
+							<button onclick="history.back()" class="btn btn-light">Буцах</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endblock %}
+
+		{#{% block javascripts %}#}
+		{#    {{ parent() }}#}
+
+		{#    <script type="text/javascript">#}
+		{#        var editor = CKEDITOR.replace("article[bodys]",#}
+		{#            {#}
+		{#                /*toolbar : 'withLargeBar',*/#}
+		{#                height: '100px',#}
+		{#                // C:\wamp64\www\uvs\admin\vendor\ckfinder\ckfinder-symfony-bundle\Resources\public\ckfinder#}
+		{#                filebrowserBrowseUrl: 'http://localhost:9001/vendor/ckfinder/ckfinder-symfony-bundle/Resources/public/ckfinder/ckfinder.html',#}
+		{#                filebrowserImageBrowseUrl: 'http://localhost:9001/vendor/ckfinder/ckfinder-symfony-bundle/Resources/public/ckfinder/ckfinder.html?Type=Images',#}
+		{#                filebrowserFlashBrowseUrl: 'http://localhost:9001/vendor/ckfinder/ckfinder-symfony-bundle/Resources/public/ckfinder/ckfinder.html?Type=Flash',#}
+		{#                filebrowserUploadUrl: 'http://localhost:9001/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',#}
+		{#                filebrowserImageUploadUrl: 'http://localhost:9001/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',#}
+		{#                filebrowserFlashUploadUrl: 'http://localhost:9001/vendor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',#}
+		{#            });#}
+		{#        // CKFinder.setupCKEditor( editor, '/' );#}
+		{#    </script>#}
+		{#{% endblock javascripts %}#}
+
+

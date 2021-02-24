@@ -1,0 +1,264 @@
+
+
+{% extends 'base.html.twig'%}
+{% block title %} Үндсэн зураг {% endblock %}
+
+{% block body %}
+{{ render(controller(
+	'App\\Controller\\HomeController::index'
+)) }}
+</div>
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="page-header">
+			<div class="row align-items-end">
+				<div class="col-lg-8">
+					<div class="page-header-title">
+						<i class="ik ik-file-text theme-color"></i>
+						<div class="d-inline">
+							<h5> Үндсэн зураг </h5>
+							<span></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row layout-wrap" id="layout-wrap">
+			<div class="col-md-12">
+				<div class="card" id="card1">
+					<div class="card-header" style="flex-flow: row-reverse;">
+						<a href="{{ path('backImage_new') }}">
+							<button type="button" class="btn btn-theme"> <i class="ik ik-plus-circle"></i> Зураг шинээр нэмэх </button>
+						</a>
+					</div>
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+						<br>
+					{% endfor %}
+					{% for message in app.flashes('error') %}
+						<div class="alert alert-danger">
+							{{ message }}
+						</div>
+						<br>
+					{% endfor %}
+					<div class="card-body">
+						<div class="dt-responsive">
+							<table id="alt-pg-dt" class="user-table table table-striped table-bordered nowrap">
+								<thead>
+								<tr>
+									<th>№</th>
+									<th>Зураг</th>
+									<th>Төлөв</th>
+									<th>Огноо</th>
+									<th><i class="ik ik-settings"></i></th>
+								</tr>
+								</thead>
+								<tbody>
+								{%  set i=0 %}
+								{% for image in images %}
+									<tr class="list-item">
+										<td>{% set i=i+1 %}{{ i }}</td>
+										<td><img src="/upload/{{ image.image }}" alt="User" class="img-half-10" style="height: 180px"></td>
+										<td>
+											{% if image.status==1 %}
+												<span class="badge badge-pill badge-success mb-1">Идэвхтэй</span>
+											{% else %}
+												<span class="badge badge-pill badge-secondary mb-1">Идэвхгүй</span>
+											{% endif %}
+										</td>
+										<td>{{ image.createdDate ? image.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+										<td>
+											<div class="list-actions">
+{#												                                                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}#}
+												<a href="#" data-toggle="modal" data-target="#edit{{ image.id }}" data-placement="top" title="Засварлах"><i class="ik ik-edit-2"></i></a>
+{#												                                                {% endif %}#}
+{#												{% if is_granted('ROLE_SUPER_ADMIN') %}#}
+												<a href="#" data-toggle="modal" data-target="#delete{{ image.id }}" data-placement="top" title="Устгах"><i class="ik ik-trash-2"></i></a>
+{#												{% endif %}#}
+											</div>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="5">Мэдээлэл байхгүй байна</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+								<tfoot>
+								<tr>
+									<th>№</th>
+									<th>Зураг</th>
+									<th>Төлөв</th>
+									<th>Огноо</th>
+									<th><i class="ik ik-settings"></i></th>
+								</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+			{% for image in images %}
+				<div class="modal fade" id="edit{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px !important;">
+						<div class="modal-content">
+							<form class="forms-sample" name="myForm" method="post" action="{{ path('backImage_edit')}}" onsubmit="return validate_form(this)">
+
+								<div class="modal-header">
+									<input name="id" type="hidden" value="{{ image.id }}">
+
+									<h5 class="modal-title" id="exampleModalCenterLabel">Зураг засварлах</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-6" style="margin-left: 20px;">
+											<div class="form-group form-float">
+												<img src="/upload/{{ image.image }}" alt="User" class="img-half-10" style="max-height:200px;">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="form-group form-float">
+												<div class="form-line focused">
+													<label>Зураг солих эсэх <span class="red">*</span></label>
+													<select class="form-control" name="cpic">
+														<option value="0">Солихгүй</option>
+														<option value="1">Солино</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-8">
+											<div class="form-group">
+												<label>Зураг оруулах</label>
+												<input type="file" id="image" name="image" class="form-control">
+											</div>
+										</div>
+
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Төлөв<span class="red">*</span></label>
+												<select name="status" class="form-control" required >
+													<option selected disabled value=''>Төлөвөө сонгоно уу?</option>
+													{% if image.status == 1 %}
+														<option selected = "selected" value="1">Идэвхтэй</option>
+														<option value="0"> Идэвхгүй</option>
+													{% elseif image.status == 0 %}
+														<option value="1">Идэвхтэй</option>
+														<option  selected="selected" value="0"> Идэвхгүй</option>
+													{% endif %}
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" name="editButton" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+									<button type="submit" class="btn btn-success">Хадгалах</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+
+		{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+			{% for image in images %}
+				<div class="modal fade" id="delete{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px !important;">
+						<div class="modal-content">
+							<form class="forms-sample" name="myForm" method="post" action="{{ path('backImage_delete')}}" onsubmit="return validate_form(this)">
+
+								<div class="modal-header">
+									<input name="id" type="hidden" value="{{ image.id }}">
+
+									<h5 class="modal-title" id="exampleModalCenterLabel">Уг зургийг устгахдаа итгэлтэй байна уу?</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-6" style="margin-left: 20px;">
+											<div class="form-group form-float">
+												<img src="/upload/{{ image.image }}" alt="User" class="img-half-10" style="max-height:300px;">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+									<button type="submit" name="delete" class="btn btn-danger">Устгах</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+		{% endblock %}
+
+
+		{#{% extends 'base.html.twig' %}#}
+
+		{#{% block title %}Article index{% endblock %}#}
+
+		{#{% block body %}#}
+		{#    <h1>Article index</h1>#}
+
+		{#    <table class="table">#}
+		{#        <thead>#}
+		{#            <tr>#}
+		{#                <th>Id</th>#}
+		{#                <th>Title</th>#}
+		{#                <th>Bodys</th>#}
+		{#                <th>Picture</th>#}
+		{#                <th>Types</th>#}
+		{#                <th>Status</th>#}
+		{#                <th>Views</th>#}
+		{#                <th>Date</th>#}
+		{#                <th>Comments</th>#}
+		{#                <th>Sort</th>#}
+		{#                <th>Who</th>#}
+		{#                <th>CreatedDate</th>#}
+		{#                <th>actions</th>#}
+		{#            </tr>#}
+		{#        </thead>#}
+		{#        <tbody>#}
+		{#        {% for article in articles %}#}
+		{#            <tr>#}
+		{#                <td>{{ article.id }}</td>#}
+		{#                <td>{{ article.title }}</td>#}
+		{#                <td>{{ article.bodys }}</td>#}
+		{#                <td>{{ article.picture }}</td>#}
+		{#                <td>{{ article.types }}</td>#}
+		{#                <td>{{ article.status }}</td>#}
+		{#                <td>{{ article.views }}</td>#}
+		{#                <td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>#}
+		{#                <td>{{ article.comments }}</td>#}
+		{#                <td>{{ article.sort }}</td>#}
+		{#                <td>{{ article.who }}</td>#}
+		{#                <td>{{ article.createdDate ? article.createdDate|date('Y-m-d H:i:s') : '' }}</td>#}
+		{#                <td>#}
+		{#                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>#}
+		{#                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+		{#                </td>#}
+		{#            </tr>#}
+		{#        {% else %}#}
+		{#            <tr>#}
+		{#                <td colspan="13">no records found</td>#}
+		{#            </tr>#}
+		{#        {% endfor %}#}
+		{#        </tbody>#}
+		{#    </table>#}
+
+		{#    <a href="{{ path('article_new') }}">Create new</a>#}
+		{#{% endblock %}#}
