@@ -1,7 +1,8 @@
  <!-- Footer Start -->
  <div class="footer">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
+            
             <div class="col-lg-8 col-md-6">
                 <div class="footer-widget">
                     <div class="b-ads">
@@ -11,13 +12,23 @@
                     </div>
                     <h3 class="title"></h3>
                     <div class="contact-info">
-
+                    
+                        <!-- <p><i class="fa fa-map-marker"></i>123 News Street, NY, USA</p> -->
+                        <p><i class="fa fa-envelope"></i>uvsiin_ungu@yahoo.com</p>
+                        <p><i class="fa fa-phone"></i>+976 99058211, +976 99007064</p>
+                        <div class="social">
+                            <a href="https://www.facebook.com/uvs99058211"><i class="fab fa-twitter"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                            <a href=""><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-lg-3 col-md-6" style="padding-top: 30px;">
+            <div class="col-lg-4 col-md-6" style="padding-top: 30px;">
                 <div class="footer-widget">
                     <h3 class="title">Бүртгүүлэх</h3>
                     <div class="newsletter">
@@ -80,39 +91,128 @@
     ></script> -->
 
 
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.slicknav.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/vendor/modernizr-3.5.0.min.js"></script>
 
-    <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/owl.carousel.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/slick.min.js"></script>
-    <!-- Date Picker -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/gijgo.min.js"></script>
-    <!-- One Page, Animated-HeadLin -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/wow.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/animated.headline.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.magnific-popup.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/bootstrap.min.js"></script>
 
-    <!-- Scrollup, nice-select, sticky -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.scrollUp.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.nice-select.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.sticky.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.slicknav.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/assets1/js/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/slick.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/assets1/js/gijgo.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/assets1/js/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/animated.headline.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.magnific-popup.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.scrollUp.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.nice-select.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.sticky.js"></script>
     
-    <!-- contact js -->
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/contact.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.form.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/mail-script.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/jquery.ajaxchimp.min.js"></script>
-    
-    <!-- Jquery Plugins, main Jquery -->	
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/plugins.js"></script>
-    <script src="<?php echo base_url(); ?>./assets/assets1/js/main.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/assets1/js/contact.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.form.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/mail-script.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/jquery.ajaxchimp.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/assets1/js/plugins.js"></script>
+    <script src="<?php echo base_url(); ?>assets/assets1/js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            $(".vertical-center-4").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 4,
+            slidesToScroll: 2
+            });
+            $(".vertical-center-3").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+            });
+            $(".vertical-center-2").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 2,
+            slidesToScroll: 2
+            });
+            $(".vertical-center").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            });
+            $(".vertical").slick({
+            dots: true,
+            vertical: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+            });
+            $(".regular").slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+            });
+            $(".center").slick({
+            dots: true,
+            infinite: true,
+            centerMode: true,
+            slidesToShow: 5,
+            slidesToScroll: 3
+            });
+            $(".variable").slick({
+            dots: true,
+            infinite: true,
+            variableWidth: true
+            });
+            $(".lazy").slick({
+            lazyLoad: 'ondemand', // ondemand progressive anticipated
+            infinite: true
+            });
+        });
+        $('.responsive').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+                },
+                {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+                }
+            ]
+        });
+    </script>
 </body>
 
 </html>

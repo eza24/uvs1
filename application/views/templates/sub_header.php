@@ -25,6 +25,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/ticker-style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/flaticon.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/slicknav.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/magnific-popup.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/themify-icons.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/nice-select.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/style1.css">
 </head>
 
 <body>

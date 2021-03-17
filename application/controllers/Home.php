@@ -12,7 +12,8 @@ class Home extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('templates/header');
+		$image = $this->db->query("SELECT * from back_image where status=1 limit 1")->row();
+		$this->load->view('templates/header', $image);
 		$this->load->view('home');
 		$this->load->view('templates/footer');
 	}

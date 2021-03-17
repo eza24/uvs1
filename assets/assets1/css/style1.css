@@ -325,7 +325,8 @@ hr {
     width: 100%
 }
 
-.overlay {
+
+/* .overlay {
     position: relative;
     z-index: 0
 }
@@ -355,7 +356,7 @@ hr {
     height: 100%;
     z-index: -1;
     opacity: 0.5
-}
+} */
 
 .section-padding {
     padding-top: 120px;

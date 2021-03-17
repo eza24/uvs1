@@ -37,19 +37,10 @@
         <!-- MDB -->
         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css" rel="stylesheet"/> -->
 
-
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/ticker-style.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/flaticon.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/slicknav.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/animate.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/magnific-popup.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/themify-icons.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/slick.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/nice-select.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/slick/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/slick/slick-theme.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets1/css/style1.css">
+
 </head>
 
 <body>
@@ -63,7 +54,8 @@
     </div>
   </div> -->
     <!-- <section class="top"> -->
-    <div class="top-news" style="background-image: url(<?php echo base_url();?>assets/img/ulaan_uul1.png);">
+
+    <div class="top-news" style="background-image: url(<?php echo base_url();?>admin/public/upload/<?php echo $image;?>);">
         <div class="overlay"></div>
         <!-- Brand Start -->
         <div class="brand">
